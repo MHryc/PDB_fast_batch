@@ -15,6 +15,7 @@ usage() {
 	cat << EOF >&2
 Usage: $PROGNAME -f <file> [-o <dir>] [-c] [-p]
 
+ -h       : get this help message
  -f <file>: the input file containing one PDB ID per line
  -o  <dir>: the output dir, default: current dir
  -c       : download a cif.gz file for each PDB id
@@ -39,7 +40,7 @@ xml=false
 sf=false
 mr=false
 mrstr=false
-while getopts f:o:cpaAxsmr o; do
+while getopts f:o:cpaAxsmrh o; do
 	case $o in
 		(f) listfile=$OPTARG;;
 		(o) outdir=$OPTARG;;
@@ -51,6 +52,7 @@ while getopts f:o:cpaAxsmr o; do
 		(s) sf=true;;
 		(m) mr=true;;
 		(r) mrstr=true;;
+		(h) usage ;;
 		(*) usage
 	esac
 done
